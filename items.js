@@ -61,10 +61,46 @@ const NULL_TALISMAN_MAX = {
   mp_regen: 2
 };
 
-const POWER_TREADS = {
+const POWER_TREADS_STR = {
   str: 10,
   attack_speed: 25
 };
+
+const POWER_TREADS_AGI = {
+  agi: 10,
+  attack_speed: 25
+};
+
+const POWER_TREADS_INT = {
+  int: 10,
+  attack_speed: 25
+};
+
+const MAGIC_WAND = {
+  str: 3,
+  agi: 3,
+  int: 3,
+};
+
+const OGRE_AXE = {
+  str: 10
+};
+
+const BLADE_OF_ALACRITY = {
+  agi: 10
+};
+
+const BRANCH = {
+  str: 1,
+  agi: 1,
+  int: 1
+};
+
+const METEOR_HAMMER = {
+  agi: 6,
+  str: 6,
+  int: 24,
+}
 
 export {
   AGHANIM,
@@ -75,5 +111,12 @@ export {
   BRACER_MAX,
   NULL_TALISMAN_MIN,
   NULL_TALISMAN_MAX,
-  POWER_TREADS
+  POWER_TREADS_STR,
+  POWER_TREADS_AGI,
+  POWER_TREADS_INT,
+  MAGIC_WAND,
+  OGRE_AXE,
+  BLADE_OF_ALACRITY,
+  BRANCH,
+  METEOR_HAMMER
 };

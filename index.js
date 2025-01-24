@@ -5,10 +5,19 @@ import {
   BRACER_MAX,
   NULL_TALISMAN_MIN,
   NULL_TALISMAN_MAX,
-  POWER_TREADS
+  POWER_TREADS_STR,
+  POWER_TREADS_AGI,
+  POWER_TREADS_INT,
+  MAGIC_WAND,
+  OGRE_AXE,
+  BLADE_OF_ALACRITY,
+  AGHANIM,
+  BRANCH,
+  METEOR_HAMMER,
 } from './items.js';
 
 const formatFloat = n => Number(n.toFixed(2));
+const compose = (...fns) => (...args) => fns.reduceRight((acc, fn) => [fn.call(null, ...acc)], args)[0];
 
 /*
   mergeBonuses([
@@ -85,13 +94,54 @@ const calcAttrs = attrs => {
 
 const formatOutputToString = obj => Object.entries(obj).map(([name, value]) => `+${value} ${name}`).join('\n');
 
-console.log(formatOutputToString(calcAttrs(WRAITH_BAND_MIN)), '\n');
-console.log(formatOutputToString(calcAttrs(BRACER_MIN)), '\n');
-console.log(formatOutputToString(calcAttrs(NULL_TALISMAN_MIN)), '\n');
-// console.log(mergeBonuses([calcAttrs(BRACER_MIN), calcAttrs(BRACER_MIN)]));
-// console.log(mergeBonuses([
-//   calcAttrs(WRAITH_BAND_MIN),
-//   calcAttrs(BRACER_MIN),
-//   calcAttrs(NULL_TALISMAN_MIN),
-// ]));
+const STANDARD_BUILD = {
+  '8min': mergeBonuses([
+    calcAttrs(POWER_TREADS_STR),
+    calcAttrs(BRACER_MIN),
+    calcAttrs(MAGIC_WAND),
+  ]),
+  '12min': mergeBonuses([
+    calcAttrs(POWER_TREADS_STR),
+    calcAttrs(BRACER_MIN),
+    calcAttrs(MAGIC_WAND),
+    calcAttrs(OGRE_AXE),
+    calcAttrs(BLADE_OF_ALACRITY),
+  ]),
+  '18min': mergeBonuses([
+    calcAttrs(POWER_TREADS_STR),
+    calcAttrs(BRACER_MIN),
+    calcAttrs(MAGIC_WAND),
+    calcAttrs(AGHANIM),
+  ]),
+}
+
+const getAllAttr = n => ({str: n, agi: n, int: n});
+
+// console.log(calcAttrs(MAGIC_WAND));
+console.log(formatOutputToString(
+  mergeBonuses([
+    BRACER_MIN,
+    BRACER_MIN,
+    BRACER_MIN,
+    BRACER_MIN,
+  ])
+), '\n');
+console.log(formatOutputToString(METEOR_HAMMER), '\n');
+// console.log(formatOutputToString(calcAttrs(NULL_TALISMAN_MIN)), '\n');
+// console.log(formatOutputToString(calcAttrs({int: 10})));
+// console.log(calcAttrs({int: 10, agi: 10, str: 10}));
+// console.log(
+//   formatOutputToString(STANDARD_BUILD['8min']),
+//   '\n'
+// );
+
+// console.log(
+//   formatOutputToString(STANDARD_BUILD['12min']),
+//   '\n'
+// );
+
+// console.log(
+//   formatOutputToString(STANDARD_BUILD['18min']),
+//   '\n'
+// );
 
